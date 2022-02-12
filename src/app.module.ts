@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ContactImporterModule } from './contact-importer/contact-importer.module';
 import { configValidationSchema } from './config.schema';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { configValidationSchema } from './config.schema';
       },
     }),
     ContactImporterModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
