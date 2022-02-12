@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Contact } from '../contact-importer/contact.entity';
 
 @Entity()
 export class User {
@@ -13,6 +14,9 @@ export class User {
 
   @Column({ type: 'varchar', nullable: false })
   password: string;
+
+  @OneToMany((_type) => Contact, (contact) => contact.user, { eager: true })
+  contacts: Contact[];
 
   @Column({ type: 'timestamp', name: 'created_at' })
   createdAt: Date;
